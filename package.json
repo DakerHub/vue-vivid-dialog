@@ -7,6 +7,13 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:DakerHub/vue-vivid-dialog.git"
+  },
+  "homepage": "https://github.com/DakerHub/vue-vivid-dialog",
+  "author": "Daker",
+  "license": "MIT",
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11"

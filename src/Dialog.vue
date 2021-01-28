@@ -1,11 +1,7 @@
 <template>
-  <transition name="vivid" :duration="600">
+  <transition name="vivid" :duration="600" type="transition">
     <div v-if="visible" class="vivid-dialog__wrap" :style="wrapStyle">
-      <div
-        class="vivid-dialog__overlay"
-        :style="overlayStyle"
-        @click="onClickOverlay"
-      ></div>
+      <div class="vivid-dialog__overlay" :style="overlayStyle" @click="onClickOverlay"></div>
 
       <div ref="dialog" class="vivid-dialog" :style="dialogStyle">
         <div class="vivid-dialog__header">
@@ -19,12 +15,7 @@
 
         <div v-if="footer" class="vivid-dialog__footer">
           <slot name="footer">
-            <component
-              v-if="footer.cancel"
-              v-bind:is="btnComponent"
-              @click="handleCancel"
-              >取消</component
-            >
+            <component v-if="footer.cancel" v-bind:is="btnComponent" @click="handleCancel">取消</component>
             <component
               v-if="footer.ok"
               primary
@@ -145,10 +136,11 @@ export default {
       }
     },
     clearAnimation() {
-      this.$refs.dialog &&
+      if (this.$refs.dialog && typeof this.$refs.dialog.getAnimations === "function") {
         this.$refs.dialog.getAnimations().forEach((animation) => {
           animation.cancel();
         });
+      }
     },
     onClickOverlay() {
       this.closeOnClickOverlay && this.close();
@@ -216,8 +208,7 @@ export default {
   background-color: #fff;
   overflow: hidden;
   border-radius: 4px;
-  box-shadow: 0px 1px 11px rgba(72, 72, 72, 0.2),
-    0px 1px 20px rgba(152, 152, 152, 0.2);
+  box-shadow: 0px 1px 11px rgba(72, 72, 72, 0.2), 0px 1px 20px rgba(152, 152, 152, 0.2);
 }
 
 .vivid-dialog__header {

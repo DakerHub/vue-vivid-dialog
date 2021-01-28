@@ -1,12 +1,8 @@
 <template>
   <div id="app">
-    <div>Hi</div>
     <div>
-      <button @click="visible = true">OPEN</button>
-      <button @click="open">OPEN&CLOSE</button>
-      <br />
-      <br />
-      <button @click="openMsg">OPEN MSG</button>
+      <button @click="visible = true">Open dialog</button>
+      <button @click="openMsg">Open dialog</button>
     </div>
     <Dialog
       v-model="visible"

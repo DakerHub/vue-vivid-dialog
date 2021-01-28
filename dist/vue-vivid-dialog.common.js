@@ -249,12 +249,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2a64f412-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Dialog.vue?vue&type=template&id=bcfac6d2&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"vivid","duration":600}},[(_vm.visible)?_c('div',{staticClass:"vivid-dialog__wrap",style:(_vm.wrapStyle)},[_c('div',{staticClass:"vivid-dialog__overlay",style:(_vm.overlayStyle),on:{"click":_vm.onClickOverlay}}),_c('div',{ref:"dialog",staticClass:"vivid-dialog",style:(_vm.dialogStyle)},[_c('div',{staticClass:"vivid-dialog__header"},[_vm._t("header",[_c('h3',{staticClass:"vivid-dialog__title"},[_vm._v(_vm._s(_vm.title))])])],2),_c('div',{staticClass:"vivid-dialog__content"},[_vm._t("default",[_vm._v(_vm._s(_vm.content))])],2),(_vm.footer)?_c('div',{staticClass:"vivid-dialog__footer"},[_vm._t("footer",[(_vm.footer.cancel)?_c(_vm.btnComponent,{tag:"component",on:{"click":_vm.handleCancel}},[_vm._v("取消")]):_vm._e(),(_vm.footer.ok)?_c(_vm.btnComponent,{tag:"component",attrs:{"primary":"","loading":_vm.okLoading,"disabled":_vm.okLoading ? 'disabled' : undefined},on:{"click":_vm.handleOK}},[_vm._v("确定")]):_vm._e()])],2):_vm._e()])]):_vm._e()])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2a64f412-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Dialog.vue?vue&type=template&id=24cd15ec&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"vivid","duration":600,"type":"transition"}},[(_vm.visible)?_c('div',{staticClass:"vivid-dialog__wrap",style:(_vm.wrapStyle)},[_c('div',{staticClass:"vivid-dialog__overlay",style:(_vm.overlayStyle),on:{"click":_vm.onClickOverlay}}),_c('div',{ref:"dialog",staticClass:"vivid-dialog",style:(_vm.dialogStyle)},[_c('div',{staticClass:"vivid-dialog__header"},[_vm._t("header",[_c('h3',{staticClass:"vivid-dialog__title"},[_vm._v(_vm._s(_vm.title))])])],2),_c('div',{staticClass:"vivid-dialog__content"},[_vm._t("default",[_vm._v(_vm._s(_vm.content))])],2),(_vm.footer)?_c('div',{staticClass:"vivid-dialog__footer"},[_vm._t("footer",[(_vm.footer.cancel)?_c(_vm.btnComponent,{tag:"component",on:{"click":_vm.handleCancel}},[_vm._v("取消")]):_vm._e(),(_vm.footer.ok)?_c(_vm.btnComponent,{tag:"component",attrs:{"primary":"","loading":_vm.okLoading,"disabled":_vm.okLoading ? 'disabled' : undefined},on:{"click":_vm.handleOK}},[_vm._v("确定")]):_vm._e()])],2):_vm._e()])]):_vm._e()])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Dialog.vue?vue&type=template&id=bcfac6d2&
+// CONCATENATED MODULE: ./src/Dialog.vue?vue&type=template&id=24cd15ec&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2a64f412-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Button.vue?vue&type=template&id=5a46a264&
 var Buttonvue_type_template_id_5a46a264_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',_vm._g(_vm._b({class:['vivid-dialog-btn vivid-btn--default', _vm.primary && 'is-primary']},'button',_vm.$attrs,false),_vm.$listeners),[(_vm.loading)?_c('span',{key:"loading"},[_vm._v("加载中...")]):_vm._t("default")],2)}
@@ -449,15 +449,6 @@ var component = normalizeComponent(
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ var Dialogvue_type_script_lang_js_ = ({
   name: "vivid-dialog",
@@ -570,9 +561,11 @@ var component = normalizeComponent(
     },
 
     clearAnimation() {
-      this.$refs.dialog && this.$refs.dialog.getAnimations().forEach(animation => {
-        animation.cancel();
-      });
+      if (this.$refs.dialog && typeof this.$refs.dialog.getAnimations === "function") {
+        this.$refs.dialog.getAnimations().forEach(animation => {
+          animation.cancel();
+        });
+      }
     },
 
     onClickOverlay() {

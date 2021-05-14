@@ -1,5 +1,7 @@
 # vue-vivid-dialog
 
+![demo]('./static/vivid-dialog-example.gif')
+
 生动活泼的 vue2.x 模态框组件，让用户因弹框爱上你的页面！
 
 ## 开始
